@@ -23,6 +23,9 @@
 		<span>${board.no }</span> 
 		<span>${board.poster}</span>
 		<span> ${board.subject }</span>
+		<span>${board.uploadfilename }</span>
+		<span><a href="filedown?atchFileId=${board.uploadfilename }">${board.uploadfilename }</a></span>
+		<img src="getByteImage.do?no=${board.no}" style="width:300px; height:300px; border-radius:15px;margin-top:5px; margin-bottom:5px"/>
 	</div>
 </c:forEach>
 <div>

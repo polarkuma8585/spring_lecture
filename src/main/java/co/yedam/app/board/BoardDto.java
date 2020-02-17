@@ -1,8 +1,9 @@
 package co.yedam.app.board;
 
+import java.util.Arrays;
 import java.util.Date;
 
-import org.springframework.web.multipart.MultipartFile;
+//import org.springframework.web.multipart.MultipartFile;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -14,19 +15,28 @@ public class BoardDto {
 	private Date lastpost;
 	private int views;
 //	@JsonIgnore private byte[] file;
-	@JsonIgnore MultipartFile uploadfile; 	   // 업로드한 첨부파일
+//	@JsonIgnore MultipartFile uploadfile; 	   // 업로드한 첨부파일
 	@JsonIgnore private String uploadfilename; // 파일명
+	@JsonIgnore private byte[] uploadfile; // 파일명
 	@JsonIgnore private int page;
 	@JsonIgnore private int start;
 	@JsonIgnore private int end;
 	@JsonIgnore private int lastPage;
 	
 	
-	public MultipartFile getUploadfile() {
+//	public MultipartFile getUploadfile() {
+//		return uploadfile;
+//	}
+//
+//	public void setUploadfile(MultipartFile uploadfile) {
+//		this.uploadfile = uploadfile;
+//	}
+
+	public byte[] getUploadfile() {
 		return uploadfile;
 	}
 
-	public void setUploadfile(MultipartFile uploadfile) {
+	public void setUploadfile(byte[] uploadfile) {
 		this.uploadfile = uploadfile;
 	}
 
@@ -122,10 +132,12 @@ public class BoardDto {
 	@Override
 	public String toString() {
 		return "BoardDto [no=" + no + ", subject=" + subject + ", poster=" + poster + ", contents=" + contents
-				+ ", lastpost=" + lastpost + ", views=" + views + ", uploadfilename=" + uploadfilename + ", page="
-				+ page + ", start=" + start + ", end=" + end + ", lastPage=" + lastPage + "]";
+				+ ", lastpost=" + lastpost + ", views=" + views + ", uploadfilename=" + uploadfilename + ", uploadfile="
+				+ Arrays.toString(uploadfile) + ", page=" + page + ", start=" + start + ", end=" + end + ", lastPage="
+				+ lastPage + "]";
 	}
 
+	
 
 		
 }

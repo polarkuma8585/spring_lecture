@@ -38,6 +38,9 @@ from board
  					<if test="uploadfilename != null and uploadfilename != '' ">
  						uploadfilename,
  					</if>
+ 					<if test="uploadfile != null and uploadfile != '' ">
+ 						uploadfile,
+ 					</if>
  						views)
     			values(
     					(select nvl(max(no),0)+1 from board), 						    					
@@ -47,7 +50,10 @@ from board
  						sysdate,
  					<if test="uploadfilename != null and uploadfilename != '' ">
  						#{uploadfilename},
- 					</if> 						
+ 					</if> 
+ 					<if test="uploadfile != null">
+ 						#{uploadfile},
+ 					</if>						
  						1 )
 
  </insert>

@@ -16,7 +16,7 @@
 		<td>&nbsp<textarea name=contents rows="10" cols="70"></textarea></td></tr>	   
 	<tr> 
 		<td align="center" bgcolor="#FFFF99">첨부파일</td>  
-		<td><input type="file" name="uploadfile" /></td></tr>
+		<td><input type="file" name="attachfile" /></td></tr>
 	<tr>
 		<td align="center" colspan="2"><input type="submit" value="저장"></td></tr>
 	
