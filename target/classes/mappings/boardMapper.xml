@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">	
+<mapper namespace="BoardDao">
+<!-- 전체 건수  -->
+<select id="boardCount" resultType="int">
+select count(*)
+	<where>
+ 		<if test="poster != null and poster != ''">
+ 			poster = #{poster}
+ 		</if>
+ 		<if test="subject != null and subject != ''">
+ 			and subject like '%'||#{subject}||'%'
+ 		</if>
+ 	</where>
+from board
+</select>
+ <select id="boardList" resultType="board">
+ select * from( select rownum rn, a.*from (
+ 	SELECT * FROM BOARD 
+ 	<where>
+ 		<if test="poster != null and poster != ''">
+ 			poster = #{poster}
+ 		</if>
+ 		<if test="subject != null and subject != ''">
+ 			and subject like '%'||#{subject}||'%'
+ 		</if>
+ 	</where>
+ 	ORDER BY NO DESC
+ 	) a ) b where rn between #{start} and #{end}
+ </select>
+ <insert id="insertBoard" parameterType="board">
+ 	insert into board(	no,
+ 						poster,
+ 						subject,
+ 						contents,
+ 						lastpost,
+ 					<if test="uploadfilename != null and uploadfilename != '' ">
+ 						uploadfilename,
+ 					</if>
+ 						views)
+    			values(
+    					(select nvl(max(no),0)+1 from board), 						    					
+ 						#{poster},
+ 						#{subject},
+ 						#{contents}, 					
+ 						sysdate,
+ 					<if test="uploadfilename != null and uploadfilename != '' ">
+ 						#{uploadfilename},
+ 					</if> 						
+ 						1 )
+
+ </insert>
+ <select id="boardOneSelect" resultType="board" parameterType="int">
+ 	select * from board where no = #{value}
+ </select>
+</mapper>

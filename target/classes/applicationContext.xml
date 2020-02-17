@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
+<!-- source code를 수정하지 않고 객체 변경을 위한 목적 -->
+
+<!-- 
+<bean id="sp" class="polymorphism.coupling.AppleSpeaker" />
+<bean id="stv" class="polymorphism.coupling.SamsungTV">
+	samsungTV가 생성될때 speaker 주입
+	<constructor-arg ref="speaker" /> 
+	<property name="speaker" ref="sp"></property>
+</bean>
+ -->
+
+ 
+<context:component-scan base-package="polymorphism" />	 
+<context:component-scan base-package="co.yedam.app" /> 
+
+
+</beans>
